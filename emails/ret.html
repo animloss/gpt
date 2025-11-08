@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Şarkı Reddedildi</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+        padding: 24px;
+      }
+      .card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+      }
+      .button {
+        display: inline-block;
+        background: #ef4444;
+        color: #ffffff;
+        padding: 12px 24px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="{{LOGO}}" alt="Logo" class="logo" />
+      <h1>Merhaba {{AD}},</h1>
+      <p>
+        <strong>{{SARKI}}</strong> adlı şarkınız yapılan inceleme sonucunda maalesef reddedildi.
+        Aşağıda belirtilen hususları gözden geçirerek tekrar gönderebilirsiniz.
+      </p>
+      <p><strong>Ret Sebebi:</strong> {{SEBEP}}</p>
+      <p>
+        Herhangi bir sorunuz olursa destek ekibimizle iletişime geçmekten çekinmeyin.
+        En kısa sürede size yardımcı olacağız.
+      </p>
+      <p>Sevgiler,<br />Müzik Distribütörü Ekibi</p>
+    </div>
+  </body>
+</html>

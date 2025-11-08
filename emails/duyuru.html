@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Duyuru</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        color: #f8fafc;
+        padding: 32px;
+      }
+      .card {
+        background: rgba(15, 23, 42, 0.85);
+        border-radius: 20px;
+        padding: 32px;
+        max-width: 620px;
+        margin: 0 auto;
+        box-shadow: 0 20px 40px rgba(8, 145, 178, 0.35);
+      }
+      .logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
+      p {
+        line-height: 1.6;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="{{LOGO}}" alt="Logo" class="logo" />
+      <h1>{{BASLIK}}</h1>
+      <p>{{ICERIK}}</p>
+      <p style="margin-top: 24px; font-size: 14px; color: #cbd5f5;">
+        Müzik Distribütörü ekibi olarak başarılı dağıtımlar dileriz.
+      </p>
+    </div>
+  </body>
+</html>

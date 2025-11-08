@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Rol {
+  admin
+  sanatci
+  label
+}
+
+enum TrackDurum {
+  INCELEMEDE
+  ONAYLANDI
+  REDDEDILDI
+}
+
+enum EmailTip {
+  retMaili
+  duyuruMaili
+  sifreSifirla
+}
+
+model User {
+  id         String   @id @default(cuid())
+  ad         String
+  soyad      String
+  email      String   @unique
+  sifreHash  String
+  rol        Rol
+  labelAdi   String?
+  createdAt  DateTime @default(now())
+  tracks     Track[]
+  announcements Announcement[] @relation("AnnouncementAuthor")
+  resetTokens PasswordResetToken[]
+}
+
+model Track {
+  id               String      @id @default(cuid())
+  isim             String
+  sanatciAdi       String
+  labelAdi         String?
+  tur              String
+  cikisTarihi      DateTime
+  isrc             String
+  telifSahibi      String
+  durum            TrackDurum @default(INCELEMEDE)
+  retSebebi        String?
+  audioDosyaYolu   String
+  kapakGorseliYolu String
+  user             User       @relation(fields: [userId], references: [id])
+  userId           String
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+}
+
+model Announcement {
+  id          String   @id @default(cuid())
+  baslik      String
+  icerik      String
+  hedefRol    String
+  createdAt   DateTime @default(now())
+  createdBy   User     @relation("AnnouncementAuthor", fields: [createdById], references: [id])
+  createdById String
+}
+
+model EmailLog {
+  id            String   @id @default(cuid())
+  kime          String
+  konu          String
+  icerikOzeti   String
+  gonderimTarihi DateTime @default(now())
+  tip           EmailTip
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  expiresAt DateTime
+}
+
+model Setting {
+  id    String @id @default(cuid())
+  anahtar String @unique
+  deger  String
+  updatedAt DateTime @updatedAt
+}
